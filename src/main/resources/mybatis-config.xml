@@ -9,6 +9,7 @@
 
 	<typeAliases>
         <typeAlias alias="Member" type="com.namyesol.tuesday.domain.member.Member" />
+        <typeAlias alias="Post" type="com.namyesol.tuesday.domain.board.Post" />
     </typeAliases>
 
     <typeHandlers>
