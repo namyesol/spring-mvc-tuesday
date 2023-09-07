@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.namyesol.tuesday.mapper.CommentMapper">
+
+    <insert id="insert" parameterType="Comment">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            SELECT COMMENTS_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        
+        INSERT INTO comments
+            (id, member_id, post_id, content, created_at, updated_at)
+        VALUES
+            (#{id}, #{memberId}, #{postId}, #{content}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <select id="findById" parameterType="Long">
+        SELECT id, member_id, post_id, content, created_at, updated_at
+        FROM comments
+        WHERE id = #{id}
+    </select>
+
+    <select id="findCommentsByPostId" parameterType="Long">
+        SELECT id, member_id, post_id, content, created_at, updated_at
+        FROM comments
+        WHERE post_id = #{postId}
+    </select>
+
+    <update id="update" parameterType="Comment">
+        UPDATE comments
+        SET
+            content = #{content},
+            updated_at = #{updatedAt}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM comments WHERE id = #{id}
+    </delete>
+</mapper>
