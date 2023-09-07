@@ -11,4 +11,7 @@
         <typeAlias alias="Member" type="com.namyesol.tuesday.domain.member.Member" />
     </typeAliases>
 
+    <typeHandlers>
+        <typeHandler javaType="java.time.LocalDateTime" handler="com.namyesol.tuesday.infrastructure.mybatis.LocalDateTimeTypeHandler" />
+    </typeHandlers>
 </configuration>
