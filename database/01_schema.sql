@@ -1,0 +1,51 @@
+CREATE TABLE members (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	username VARCHAR(255) UNIQUE NOT NULL,
+	email VARCHAR(255) UNIQUE NOT NULL,
+	password VARCHAR(255) NOT NULL
+);
+
+CREATE SEQUENCE members_seq;
+
+CREATE TABLE posts (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	member_id NUMBER(19) NOT NULL,
+	title VARCHAR(255),
+	content VARCHAR(255),
+	views NUMBER(10),
+	created_at TIMESTAMP,
+	updated_at TIMESTAMP
+);
+
+CREATE SEQUENCE posts_seq;
+
+CREATE TABLE comments (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	member_id NUMBER(19) NOT NULL,
+	post_id NUMBER(19) NOT NULL,
+	content VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL
+);
+
+CREATE SEQUENCE comments_seq;
+
+CREATE TABLE storages (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	member_id NUMBER(19) NOT NULL,
+	title VARCHAR(255) NOT NULL,
+	content VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL
+);
+
+CREATE SEQUENCE storages_seq;
+
+CREATE TABLE files (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	storage_id NUMBER(19) NOT NULL,
+	original_filename VARCHAR(255) NOT NULL,
+	filename VARCHAR(255) NOT NULL
+);
+
+CREATE SEQUENCE files_seq;

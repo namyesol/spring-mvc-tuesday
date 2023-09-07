@@ -1,0 +1,9 @@
+version: "3"
+services:
+  oracle:
+    image: gvenzl/oracle-xe:11.2.0.2
+    shm_size: 1g
+    environment: 
+      - ORACLE_PWD=oracle
+    ports:
+      - "1521:1521"
