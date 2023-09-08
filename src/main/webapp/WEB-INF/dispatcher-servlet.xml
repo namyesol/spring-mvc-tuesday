@@ -9,6 +9,9 @@
                         http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven validator="validator">
+		<mvc:argument-resolvers>
+			<bean class="com.namyesol.tuesday.infrastructure.springframework.argumentresolver.MemberMethodArgumentResolver" />
+		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
