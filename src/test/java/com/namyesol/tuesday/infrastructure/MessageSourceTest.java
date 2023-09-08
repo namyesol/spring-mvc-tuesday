@@ -23,7 +23,7 @@ public class MessageSourceTest {
 	@Test
 	public void testErrorMessage() {
 		Locale.setDefault(Locale.KOREAN);
-		String message = messageSource.getMessage("errors.test", null, null, null);
-		Assertions.assertThat(message).isEqualTo("test-error-message");
+		String message = messageSource.getMessage("NotBlank", null, null, null);
+		Assertions.assertThat(message).isEqualTo("빈 칸을 입력해주세요.");
 	}
 }
