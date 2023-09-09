@@ -48,7 +48,7 @@ public class RegistrationControllerTest {
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.param("username", username)
 				.param("password", password)
-				.param(email, "email"))
+				.param("email", email))
 			.andDo(print())
 			.andExpect(status().is3xxRedirection())
 			.andExpect(redirectedUrl("/"));
