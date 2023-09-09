@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.namyesol.tuesday.mapper.PostReadMapper">
+    <resultMap id="postDetails" type="PostDetails">
+        <id property="id" column="post_id"/>
+        <result property="authorId" column="author_id"/>
+        <result property="authorName" column="author_username"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="views" column="views"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <resultMap id="commentDetails" type="CommentDetails">
+        <id property="id" column="comment_id"/>
+        <result property="authorId" column="author_id"/>
+        <result property="authorName" column="author_username"/>
+        <result property="postId" column="post_id"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findById" parameterType="Long" resultMap="postDetails">
+        SELECT 
+            P.id as post_id, 
+            P.title as title,
+            P.content as content,
+            P.views as views,
+            P.created_at as created_at,
+            P.updated_at as updated_at,
+            M.id as author_id,
+            M.username as author_username
+        FROM posts P
+            LEFT OUTER JOIN members M
+            ON P.member_id = M.id
+        where P.id= #{id}
+    </select>
+
+    <select id="findAll" resultMap="postDetails">
+        SELECT 
+            P.id as post_id, 
+            P.title as title,
+            P.content as content,
+            P.views as views,
+            P.created_at as created_at,
+            P.updated_at as updated_at,
+            M.id as author_id,
+            M.username as author_username,
+        FROM posts P
+            LEFT OUTER JOIN members M
+            ON P.member_id = M.id
+    </select>
+
+    <select id="findCommentsByPostId" parameterType="Long" resultMap="commentDetails">
+        SELECT
+            C.id as comment_id,
+            C.post_id as post_id,
+            C.content as content,
+            C.created_at as created_at,
+            C.updated_at as updated_at,
+           	M.id as author_id,
+            M.username as author_username
+        FROM comments C
+            LEFT OUTER JOIN members M
+            ON C.member_id = M.id
+        WHERE C.post_id = #{postId}
+    </select>
+</mapper>
