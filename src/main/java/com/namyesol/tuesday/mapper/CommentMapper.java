@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.namyesol.tuesday.domain.board.Comment;
+import com.namyesol.tuesday.domain.post.Comment;
 
 @Mapper
 public interface CommentMapper {

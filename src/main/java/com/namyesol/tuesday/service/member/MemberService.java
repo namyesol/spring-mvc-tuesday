@@ -1,7 +1,6 @@
 package com.namyesol.tuesday.service.member;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.namyesol.tuesday.domain.member.Member;
 import com.namyesol.tuesday.exception.NotFoundException;

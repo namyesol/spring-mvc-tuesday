@@ -12,7 +12,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.namyesol.tuesday.controller.constant.SessionConstants;
 import com.namyesol.tuesday.domain.member.Member;
-import com.namyesol.tuesday.exception.NotFoundException;
 
 /**
  * Resolves method arguments annotated with an @{@link Principal}.

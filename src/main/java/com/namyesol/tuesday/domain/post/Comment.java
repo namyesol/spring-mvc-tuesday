@@ -1,4 +1,4 @@
-package com.namyesol.tuesday.domain.board;
+package com.namyesol.tuesday.domain.post;
 
 import java.time.LocalDateTime;
 

@@ -15,12 +15,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.namyesol.tuesday.domain.board.Comment;
-import com.namyesol.tuesday.domain.board.Post;
 import com.namyesol.tuesday.domain.member.Member;
+import com.namyesol.tuesday.domain.post.Comment;
+import com.namyesol.tuesday.domain.post.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "file:src/main/webapp/WEB-INF/application-context.xml" })
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/application-context.xml"})
 @Transactional
 public class CommentMapperIntegrationTest {
 

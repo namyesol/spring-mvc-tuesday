@@ -5,7 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.namyesol.tuesday.domain.board.Comment;
+import com.namyesol.tuesday.domain.post.Comment;
 import com.namyesol.tuesday.mapper.CommentMapper;
 
 @Repository

@@ -3,12 +3,12 @@ package com.namyesol.tuesday.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-import com.namyesol.tuesday.domain.board.Post;
+import com.namyesol.tuesday.domain.post.Post;
 import com.namyesol.tuesday.mapper.PostMapper;
 
-@Repository
+@Component
 public class PostDao implements PostMapper {
 
 	private final SqlSessionTemplate sqlSessionTemplate;
@@ -53,7 +53,5 @@ public class PostDao implements PostMapper {
 	public void increaseViews(Long id) {
 		sqlSessionTemplate.update(namespace + ".increaseViews", id);
 	}
-	
-	
 	
 }

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.namyesol.tuesday.domain.member.Member;
-import com.namyesol.tuesday.exception.UnauthorizedException;
 
 @Service
 @Transactional(readOnly = true)
@@ -22,7 +21,6 @@ public class LoginService {
 
         if (member == null || !password.equals(member.getPassword())) {
         	return null;
-//            throw new UnauthorizedException("Invalid username or password"); 
         }
 
         return member;

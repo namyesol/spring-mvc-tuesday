@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.namyesol.tuesday.domain.board.Post;
+import com.namyesol.tuesday.domain.post.Post;
 
 @Mapper
 public interface PostMapper {
