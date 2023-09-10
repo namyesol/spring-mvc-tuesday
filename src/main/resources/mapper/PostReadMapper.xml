@@ -47,7 +47,7 @@
             P.created_at as created_at,
             P.updated_at as updated_at,
             M.id as author_id,
-            M.username as author_username,
+            M.username as author_username
         FROM posts P
             LEFT OUTER JOIN members M
             ON P.member_id = M.id

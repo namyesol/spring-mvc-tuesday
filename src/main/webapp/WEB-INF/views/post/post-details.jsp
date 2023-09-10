@@ -85,7 +85,7 @@
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">댓글</h2>
                 </div>
-                <form action='<spring:url value="/posts/${post.id}/comment"/>' method="post" class="mb-6">
+                <form action='<spring:url value="/posts/${post.id}/comments"/>' method="post" class="mb-6">
                     <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                         <label for="comment" class="sr-only">Your comment</label>
                         <textarea name="comment" id="comment" rows="6"
