@@ -14,18 +14,18 @@ import com.namyesol.tuesday.controller.constant.SessionConstants;
 import com.namyesol.tuesday.domain.member.Member;
 
 /**
- * Resolves method arguments annotated with an @{@link Principal}.
+ * Resolves method arguments annotated with an @{@link CurrentMember}.
  *
  * @author NamYesol
  */
-public class MemberMethodArgumentResolver implements HandlerMethodArgumentResolver {
+public class CurrentMemberMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        boolean hasPrincipalAnnotation = parameter.hasParameterAnnotation(Principal.class);
+        boolean hasCurrentMemberAnnotation = parameter.hasParameterAnnotation(CurrentMember.class);
         boolean hasMemberType = Member.class.isAssignableFrom(parameter.getParameterType());
 
-        return hasPrincipalAnnotation && hasMemberType;
+        return hasCurrentMemberAnnotation && hasMemberType;
     }
 
     @Override

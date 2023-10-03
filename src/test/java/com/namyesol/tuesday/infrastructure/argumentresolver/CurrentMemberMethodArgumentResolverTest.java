@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.namyesol.tuesday.controller.constant.SessionConstants;
 import com.namyesol.tuesday.domain.member.Member;
-import com.namyesol.tuesday.infrastructure.springframework.argumentresolver.MemberMethodArgumentResolver;
-import com.namyesol.tuesday.infrastructure.springframework.argumentresolver.Principal;
+import com.namyesol.tuesday.infrastructure.springframework.argumentresolver.CurrentMember;
+import com.namyesol.tuesday.infrastructure.springframework.argumentresolver.CurrentMemberMethodArgumentResolver;
 
-public class MemberMethodArgumentResolverTest {
+public class CurrentMemberMethodArgumentResolverTest {
 
 	private MockMvc mockMvc;
 	
@@ -28,7 +28,7 @@ public class MemberMethodArgumentResolverTest {
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders
 				.standaloneSetup(new MemberController())
-				.setCustomArgumentResolvers(new MemberMethodArgumentResolver())
+				.setCustomArgumentResolvers(new CurrentMemberMethodArgumentResolver())
 				.build();
 	}
 	
@@ -64,7 +64,7 @@ public class MemberMethodArgumentResolverTest {
 	private class MemberController {
 		@GetMapping("/echo")
 		@ResponseBody
-		public Member handler(@Principal Member member) {
+		public Member handler(@CurrentMember Member member) {
 			return member;
 		}
 	}

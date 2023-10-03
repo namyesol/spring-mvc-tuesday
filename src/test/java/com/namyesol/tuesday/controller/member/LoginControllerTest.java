@@ -19,7 +19,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -106,7 +105,6 @@ public class LoginControllerTest {
 			.andExpect(view().name("login/login"))
 			.andExpect(model().attributeExists("loginForm"))
 			.andExpect(model().attributeHasErrors("loginForm"));
-		// TODO implement gobalError matcher
 	}
 	
 	@Test
