@@ -26,11 +26,13 @@
 		<oracle-driver.version>11.2.0.1.0</oracle-driver.version>
 		<javax-validation.version>2.0.1.Final</javax-validation.version>
 		<hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
-		<servlet-api.version>3.1.0</servlet-api.version>
+		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp-api.version>2.3.3</jsp-api.version>
 		<el-api.version>3.0.0</el-api.version>
 		<javax-jstl.version>1.2</javax-jstl.version>
 		<javax-el.version>3.0.1-b12</javax-el.version>
+		<tomcat.version>9.0.79</tomcat.version>
+		<tomcat-loger.version>9.0.0.M6</tomcat-loger.version>
 		<jackson.version>2.15.2</jackson.version>
 		<json-path.version>2.8.0</json-path.version>
 		<commons-dbcp.version>2.9.0</commons-dbcp.version>
@@ -127,6 +129,32 @@
 			<artifactId>javax.el</artifactId>
 			<version>${javax-el.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- Embedded Tomcat -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper-el</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-logging-juli</artifactId>
+			<version>8.5.2</version>
 		</dependency>
 		<!-- File Storage -->
 		<dependency>
