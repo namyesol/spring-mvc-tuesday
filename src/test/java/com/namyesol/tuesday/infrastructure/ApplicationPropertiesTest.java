@@ -1,6 +1,6 @@
 package com.namyesol.tuesday.infrastructure;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,23 +14,32 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 })
 public class ApplicationPropertiesTest {
 
-	@Value("${driverClassName}")
+	@Value("${jdbc.driverClassName}")
 	String driverClassName;
 	
-	@Value("${url}")
+	@Value("${jdbc.url}")
 	String url;
 	
-	@Value("${username}")
+	@Value("${jdbc.username}")
 	String username;
 	
-	@Value("${password}")
+	@Value("${jdbc.password}")
 	String password;
 	
+	@Value("${filestore.basedir}")
+	String basedir;
+
 	@Test
 	public void testApplicationPropertiesLoads() {
 		assertThat(driverClassName).isEqualTo("oracle.jdbc.driver.OracleDriver");
 		assertThat(url).isEqualTo("jdbc:oracle:thin:@localhost:1521:xe");
 		assertThat(username).isEqualTo("tuesday");
 		assertThat(password).isEqualTo("tuesday");
+	}
+
+	@Test
+	public void shouldFindFileStoreDirectory() {
+		assertThat(basedir).isNotNull();
+		assertThat(basedir).endsWith("/files");
 	}
 }

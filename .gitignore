@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/maven,eclipse,intellij+iml,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven,eclipse,intellij+iml,visualstudiocode,macos
 
+### Local FileStore ###
+files/
+
 ### Embeded Tomcat ###
 tomcat*/
 

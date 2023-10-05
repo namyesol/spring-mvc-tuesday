@@ -225,6 +225,12 @@
 
 	<build>
 		<finalName>tuesday</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven
 			defaults (may be moved to
       parent pom) -->
@@ -238,6 +244,12 @@
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.0.2</version>
+					<configuration>
+						<delimiters>
+							<delimiter>@</delimiter>
+						</delimiters>
+						<useDefaultDelimiters>false</useDefaultDelimiters>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -274,4 +286,21 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driverClassName>oracle.jdbc.driver.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@localhost:1521:xe</jdbc.url>
+				<jdbc.username>tuesday</jdbc.username>
+				<jdbc.password>tuesday</jdbc.password>
+				<filestore.basedir>${project.basedir}/files/</filestore.basedir>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
