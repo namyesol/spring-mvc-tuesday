@@ -30,7 +30,7 @@ CREATE TABLE comments (
 
 CREATE SEQUENCE comments_seq;
 
-CREATE TABLE storages (
+CREATE TABLE storage (
 	id NUMBER(19) PRIMARY KEY NOT NULL,
 	member_id NUMBER(19) NOT NULL,
 	title VARCHAR(255) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE storages (
 	updated_at TIMESTAMP NOT NULL
 );
 
-CREATE SEQUENCE storages_seq;
+CREATE SEQUENCE storage_seq;
 
 CREATE TABLE files (
 	id NUMBER(19) PRIMARY KEY NOT NULL,
@@ -49,3 +49,12 @@ CREATE TABLE files (
 );
 
 CREATE SEQUENCE files_seq;
+
+CREATE TABLE images (
+	id NUMBER(19) PRIMARY KEY NOT NULL,
+	storage_id NUMBER(19) NOT NULL,
+	original_filename VARCHAR(255) NOT NULL,
+	filename VARCHAR(255) NOT NULL
+);
+
+CREATE SEQUENCE images_seq;

@@ -40,6 +40,6 @@ public class ApplicationPropertiesTest {
 	@Test
 	public void shouldFindFileStoreDirectory() {
 		assertThat(basedir).isNotNull();
-		assertThat(basedir).endsWith("/files");
+		assertThat(basedir).endsWith("/files/");
 	}
 }

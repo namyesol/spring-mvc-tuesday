@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.namyesol.tuesday.mapper.StorageMapper">
+
+    <resultMap id="StorageObjectResultMap" type="StorageObject">
+        <id property="id" column="id" />
+        <result property="memberId" column="member_id"/>
+        <result property="name" column="title"/>
+        <result property="description" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <resultMap id="FileObjectResultMap" type="MyBatisFileObject">
+        <id property="id" column="id"/>
+        <result property="storageId" column="storage_id"/>
+        <result property="originalFileName" column="original_filename" />
+        <result property="storeFileName" column="filename" />
+    </resultMap>
+
+    <insert id="insert" parameterType="StorageObject">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            SELECT STORAGE_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO storage
+            (id, member_id, title, content, created_at, updated_at)
+        VALUES
+            (#{id}, #{memberId}, #{name}, #{description}, #{createdAt}, #{updatedAt})
+    </insert>
+
+	<select id="findById" parameterType="Long" resultMap="StorageObjectResultMap">
+        SELECT id, member_id, title, content, created_at, updated_at
+        FROM storage
+        WHERE id= #{id}
+    </select>
+    
+    <select id="findIds" resultType="Long">
+        SELECT id FROM storage
+    </select>
+
+    <insert id="insertFile" parameterType="MyBatisFileObject">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            SELECT FILES_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO files
+            (id, storage_id, original_filename, filename)
+        VALUES
+            (#{id}, #{storageId}, #{originalFileName}, #{storeFileName})
+    </insert>
+
+    <insert id="insertImageFile" parameterType="MyBatisFileObject">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            SELECT IMAGES_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO images
+            (id, storage_id, original_filename, filename)
+        VALUES
+            (#{id}, #{storageId}, #{originalFileName}, #{storeFileName})
+    </insert>
+
+    <select id="findFilesByStorageId" parameterType="Long" resultMap="FileObjectResultMap">
+        SELECT id, storage_id, original_filename, filename
+        FROM files
+        WHERE storage_id = #{storageId}
+    </select>
+    
+    <select id="findImagesByStorageId" parameterType="Long" resultMap="FileObjectResultMap">
+        SELECT id, storage_id, original_filename, filename
+        FROM images
+        WHERE storage_id = #{storageId}
+    </select>
+    
+</mapper>

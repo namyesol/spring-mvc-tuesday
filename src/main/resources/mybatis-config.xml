@@ -14,6 +14,9 @@
         
         <typeAlias alias="PostDetails" type="com.namyesol.tuesday.dto.post.PostDetails" />
         <typeAlias alias="CommentDetails" type="com.namyesol.tuesday.dto.post.CommentDetails" />
+        
+        <typeAlias alias ="StorageObject" type="com.namyesol.tuesday.domain.storage.StorageObject" />
+        <typeAlias alias ="MyBatisFileObject" type="com.namyesol.tuesday.mapper.MyBatisFileObject" />
     </typeAliases>
 
     <typeHandlers>
